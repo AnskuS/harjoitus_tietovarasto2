@@ -40,7 +40,9 @@ def merge_sort(arr):
     return arr
 
 if __name__ == '__main__':
-    value_list = [1, 1, 3, 3, 5, 6, 8, 8, 9, 23, 33, 51, 54, 57, 78]
-    print(f'Enter numbers, separated by \',\': {value_list}')
-    sorted_list = merge_sort(value_list)
+    input_str = "1,5,6,8,9,23,33,51,54,57,78"
+    input_list = list(map(int, input_str.split(',')))
+    print(f"Enter numbers, separated by ',': {input_str}")
+    print(f"input_list: {input_list}")
+    sorted_list = merge_sort(input_list)
     print(f'Sorted list: {sorted_list}')
