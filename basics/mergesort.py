@@ -1,52 +1,46 @@
+def merge_sort(arr):
+    if len(arr) > 1:
+        mid = len(arr) // 2  # Finding the mid of the array
+        L = arr[:mid]  # Dividing the elements into 2 halves
+        R = arr[mid:]
 
-def debug_print(debug_msg=None, **kwargs):
+        print(f'array: {arr}')
+        print(f'm: {mid}')
 
-    if debug_msg:
-        print(debug_msg)
+        merge_sort(L)  # Sorting the first half
+        merge_sort(R)  # Sorting the second half
 
-    for key, value in kwargs.items():
-        print("{}: {}".format(key, value))
+        i = j = k = 0
 
+        # Copy data to temp arrays L[] and R[]
+        while i < len(L) and j < len(R):
+            if L[i] < R[j]:
+                arr[k] = L[i]
+                i += 1
+            else:
+                arr[k] = R[j]
+                j += 1
+            k += 1
 
-def mergesort(array):
-    if len(array) <= 1:
-        return array
+        # Checking if any element was left
+        while i < len(L):
+            arr[k] = L[i]
+            i += 1
+            k += 1
 
-    m = len(array) // 2
+        while j < len(R):
+            arr[k] = R[j]
+            j += 1
+            k += 1
 
-    left = mergesort(array[:m])
-    right = mergesort(array[m:])
+        print(f'Merging...')
+        print(f'left: {L}')
+        print(f'right: {R}')
+        print(f'merged: {arr}')
+    return arr
 
-    return merge(left, right)
-
-
-def merge(left, right):
-    merged = []
-
-    while len(left) > 0 and len(right) > 0:
-        if left[0] <= right[0]:
-            merged.append(left.pop(0))
-        else:
-            merged.append(right.pop(0))
-
-    if len(left) > 0:
-        merged += left
-    else:
-        merged += right
-
-    return merged
-
-
-if __name__ == "__main__":
-    input_str = input("Enter numbers, separated by ',': ")
-    input_list = input_str.split(",")
-    value_list = []
-    for x in input_list:
-        try:
-            value_list.append(int(x))
-        except ValueError as err:
-            print("Invalid input.")
-            quit(1)
-
-    sorted_list = mergesort(value_list)
-    print(sorted_list)
+if __name__ == '__main__':
+    value_list = [1, 5, 6, 8, 9, 23, 33, 51, 54, 57, 78]
+    print(f'value_list: {value_list}')
+    sorted_list = merge_sort(value_list)
+    print(f'Sorted list: {sorted_list}')
