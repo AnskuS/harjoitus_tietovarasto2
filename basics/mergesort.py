@@ -1,18 +1,18 @@
 def merge_sort(arr):
     if len(arr) > 1:
-        mid = len(arr) // 2  # Finding the mid of the array
-        L = arr[:mid]  # Dividing the elements into 2 halves
+        mid = len(arr) // 2  # Находим середину списка
+        L = arr[:mid]  # Делим элементы на две половины
         R = arr[mid:]
 
         print(f'array: {arr}')
         print(f'm: {mid}')
 
-        merge_sort(L)  # Sorting the first half
-        merge_sort(R)  # Sorting the second half
+        merge_sort(L)  # Сортируем первую половину
+        merge_sort(R)  # Сортируем вторую половину
 
         i = j = k = 0
 
-        # Copy data to temp arrays L[] and R[]
+        # Копируем данные во временные массивы L и R
         while i < len(L) and j < len(R):
             if L[i] < R[j]:
                 arr[k] = L[i]
@@ -22,7 +22,7 @@ def merge_sort(arr):
                 j += 1
             k += 1
 
-        # Checking if any element was left
+        # Проверяем, остались ли элементы
         while i < len(L):
             arr[k] = L[i]
             i += 1
@@ -40,7 +40,7 @@ def merge_sort(arr):
     return arr
 
 if __name__ == '__main__':
-    value_list = [1, 5, 6, 8, 9, 23, 33, 51, 54, 57, 78]
-    print(f'value_list: {value_list}')
+    value_list = [1, 1, 3, 3, 5, 6, 8, 8, 9, 23, 33, 51, 54, 57, 78]
+    print(f'Enter numbers, separated by \',\': {value_list}')
     sorted_list = merge_sort(value_list)
     print(f'Sorted list: {sorted_list}')
