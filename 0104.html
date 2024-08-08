@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+
+<body>
+
+<script>
+
+Array.prototype.min = function(){
+    var min = parseInt(this[this.length-1]), el;
+    for(var i=this.length-2; i>=0; i--){
+        el = parseInt(this[i]);
+        if(el<min){
+            min = el;
+        }
+    }
+    return min;
+};
+
+Array.prototype.max = function(){
+    var max = parseInt(this[this.length-1]), el;
+    for(var i=this.length-2; i>=0; i--){
+        el = parseInt(this[i]);
+        if(el>max){
+            max = el;
+        }
+    }
+    return max;
+};
+
+
+var array = [3,1,5,];
+document.write(array);
+document.write('</br>');
+document.write(array.max());
+
+
+
+</script>
+</body>
+</html>
